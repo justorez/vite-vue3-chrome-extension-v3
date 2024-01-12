@@ -20,6 +20,6 @@ export const useAppStore = defineStore('app', () => {
     count,
     name,
     increment,
-    decrement,
+    decrement
   }
 })

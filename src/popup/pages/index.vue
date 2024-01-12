@@ -11,6 +11,12 @@ const store = useAppStore()
 
 const name = computed(() => store.name)
 const count = computed(() => store.count)
+const openMain = () => {
+  chrome.tabs.create({
+    active: true,
+    url: chrome.runtime.getURL('src/main/index.html')
+  })
+}
 </script>
 
 <template>
@@ -56,6 +62,12 @@ const count = computed(() => store.count)
       >
         Decrement
       </button>
+      <button
+        class="btn btn-primary"
+        @click="openMain"
+      >
+        Open Main Page
+      </button>
     </div>
 
     <RouterLink
@@ -69,7 +81,7 @@ const count = computed(() => store.count)
 
 <style scoped>
 .btn {
-  @apply px-4 py-2 rounded-md bg-blue-500 text-white;
+  @apply px-4 py-2 rounded-md text-white;
 }
 
 .logo {

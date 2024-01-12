@@ -1,6 +1,6 @@
 # vite-vue3-browser-extension-v3
 
-[![build](https://github.com/mubaidr/vite-vue3-chrome-extension-v3/actions/workflows/build.yml/badge.svg)](https://github.com/mubaidr/vite-vue3-chrome-extension-v3/actions/workflows/build.yml) [![release](https://github.com/mubaidr/vite-vue3-chrome-extension-v3/actions/workflows/release.yml/badge.svg)](https://github.com/mubaidr/vite-vue3-chrome-extension-v3/actions/workflows/release.yml)
+[![build](https://github.com/justorez/vite-vue3-chrome-extension-v3/actions/workflows/build.yml/badge.svg)](https://github.com/justorez/vite-vue3-chrome-extension-v3/actions/workflows/build.yml) [![release](https://github.com/justorez/vite-vue3-chrome-extension-v3/actions/workflows/release.yml/badge.svg)](https://github.com/justorez/vite-vue3-chrome-extension-v3/actions/workflows/release.yml)
 
 A [Vite](https://vitejs.dev/) powered WebExtension ([Chrome](https://developer.chrome.com/docs/extensions/reference/), [FireFox](https://addons.mozilla.org/en-US/developers/), etc.) starter template based on `manifest 3`, `vue3` and `vite`.
 
@@ -65,7 +65,7 @@ Tailwind css `forms` and `typography` plugins are enabled for default styling of
 
 ### GitHub Template
 
-[Create a repo from this template on GitHub](https://github.com/mubaidr/vite-vue3-chrome-extension-v3/generate).
+[Create a repo from this template on GitHub](https://github.com/justorez/vite-vue3-chrome-extension-v3/generate).
 
 ### Clone to local
 
@@ -74,7 +74,7 @@ If you prefer to do it manually with the cleaner git history
 > If you don't have pnpm installed, run: npm install -g pnpm
 
 ```bash
-pnpx degit mubaidr/vite-vue3-chrome-extension-v3 my-webext
+pnpx degit justorez/vite-vue3-chrome-extension-v3 my-webext
 cd my-webext
 pnpm i
 ```
@@ -87,11 +87,12 @@ pnpm i
   - `content-script` - scripts and components to be injected as `content_script`
     - `iframe` content script iframe vue3 app which will be injected into page
   - `background` - scripts for background.
-  - `popup` - popup vuejs application root
+  - `popup` - popup vue application root
     - `pages` - popup pages
-  - `options` - options vuejs application root
+  - `options` - options vue application root
     - `pages` - options pages
-  - `setup` - Page for Install and Update chrome extension events
+  - `main` - main vue application root (extension home page, if you need)
+  - `setup` - page for Install and Update extension events
     - `pages` - pages for install and update events
   - `offscreen` - Chrome extension offscreen pages, can be used for audio, screen recording
   - `pages` - application pages, common to all views (About, Contact, Authentication etc)
@@ -126,6 +127,7 @@ And then pack files under `dist`, you can upload `dist.crx` or `dist.xpi` to app
 ## Contributors
 
 <!-- readme: collaborators,contributors -start -->
+
 <table>
 <tr>
     <td align="center">

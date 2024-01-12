@@ -1,4 +1,4 @@
-# Update #Whatever Version Here
+# Update Whatever Version Here
 
 # Example update
 

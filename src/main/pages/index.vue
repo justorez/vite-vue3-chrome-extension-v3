@@ -2,7 +2,7 @@
 
 <template>
   <div class="text-center m-4">
-    <h1 class="text-3xl font-bold underline pb-6">Hello world from Options!</h1>
+    <h1 class="text-3xl font-bold underline pb-6">Hello world from Main!</h1>
 
     <a class="link link-primary">
       <RouterLink to="/common/about">About</RouterLink>

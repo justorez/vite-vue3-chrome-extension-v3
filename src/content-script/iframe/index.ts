@@ -9,11 +9,11 @@ const router = createRouter({
   extendRoutes: (routes) => {
     routes.push({
       path: '/',
-      redirect: '/iframe',
+      redirect: '/iframe'
     })
 
     return routes
-  },
+  }
 })
 
 createApp(App).use(router).mount('#app')

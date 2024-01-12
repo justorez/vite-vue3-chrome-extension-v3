@@ -1,11 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAppStore } from '@/stores/app.store'
+
+const store = useAppStore()
+
+const count = computed(() => store.count)
+</script>
 
 <template>
   <header
     aria-label="Site Header"
     class="bg-gray-50"
   >
-    Content Script Iframe Header
+    Main Header (Count: {{ count }})
   </header>
 
   <RouterView />
@@ -14,7 +20,7 @@
     aria-label="Site Footer"
     class="bg-gray-50"
   >
-    Content Script Iframe Footer
+    Main Footer
   </footer>
 </template>
 

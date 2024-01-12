@@ -17,23 +17,29 @@ export default defineManifest(async (env) => ({
   // semver is OK in "version_name"
   version_name: version,
   manifest_version: 3,
+  default_locale: 'zh_CN',
+  icons: {
+    16: 'icons/vite.png',
+    48: 'icons/vite.png',
+    128: 'icons/vite.png'
+  },
   // key: 'ekgmcbpgglflmgcfajnglpbcbdccnnje',
   action: {
-    default_popup: 'src/popup/index.html',
+    default_popup: 'src/popup/index.html'
   },
+  options_page: 'src/options/index.html',
   background: {
-    service_worker: 'src/background/index.ts',
+    service_worker: 'src/background/index.ts'
   },
   content_scripts: [
     {
       all_frames: false,
       js: ['src/content-script/index.ts'],
       matches: ['*://*/*'],
-      run_at: 'document_end',
-    },
+      run_at: 'document_end'
+    }
   ],
   host_permissions: ['*://*/*'],
-  options_page: 'src/options/index.html',
   permissions: ['storage'],
-  web_accessible_resources: [],
+  web_accessible_resources: []
 }))

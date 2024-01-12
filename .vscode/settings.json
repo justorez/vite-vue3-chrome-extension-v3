@@ -6,5 +6,11 @@
     }
   ],
   "typescript.preferences.autoImportFileExcludePatterns": ["vue-router"],
-  "markdown.validate.ignoredLinks": ["./src/setup/pages/index.ts"]
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.scss": "tailwindcss"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  }
 }

@@ -1,14 +1,15 @@
-import { crx } from '@crxjs/vite-plugin'
+import { dirname, relative } from 'node:path'
+import { URL, fileURLToPath } from 'node:url'
 import vue from '@vitejs/plugin-vue'
-import { dirname, relative } from 'path'
+import { crx } from '@crxjs/vite-plugin'
 import AutoImport from 'unplugin-auto-import/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
-import { URL, fileURLToPath } from 'url'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { defineConfig, type Plugin } from 'vite'
+// import VueDevTools from 'vite-plugin-vue-devtools'
 import { defineViteConfig as define } from './define.config'
 import manifest from './manifest.config'
 import packageJson from './package.json'
@@ -19,9 +20,9 @@ const transformHtmlPlugin = (data) =>
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
-        return html.replace(/<%=\s*(\w+)\s*%>/gi, (match, p1) => data[p1] || '')
-      },
-    },
+        return html.replace(/<%=\s*(\w+)\s*%>/gi, (_, p) => data[p] || '')
+      }
+    }
   }
 
 // https://vitejs.dev/config/
@@ -30,8 +31,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '~': fileURLToPath(new URL('./src', import.meta.url)),
-      src: fileURLToPath(new URL('./src', import.meta.url)),
-    },
+      src: fileURLToPath(new URL('./src', import.meta.url))
+    }
   },
   plugins: [
     crx({ manifest }),
@@ -45,19 +46,20 @@ export default defineConfig({
         { src: 'src/options/pages', path: 'options/' },
         { src: 'src/popup/pages', path: 'popup/' },
         { src: 'src/setup/pages', path: 'setup/' },
+        { src: 'src/main/pages', path: 'main/' }
       ],
       dts: 'src/typed-router.d.ts',
-      extensions: ['.vue'],
+      extensions: ['.vue']
     }),
 
     vue(),
 
-    // VueDevTools(),
+    // VueDevTools(), // No working
 
     AutoImport({
       imports: ['vue', VueRouterAutoImports, 'vue/macros', '@vueuse/core'],
       dts: 'src/auto-imports.d.ts',
-      dirs: ['src/composables/'],
+      dirs: ['src/composables/']
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -69,16 +71,16 @@ export default defineConfig({
         // auto import icons
         IconsResolver({
           prefix: 'i',
-          enabledCollections: ['mdi'],
-        }),
-      ],
+          enabledCollections: ['mdi']
+        })
+      ]
     }),
 
     // https://github.com/antfu/unplugin-icons
     Icons({
       autoInstall: true,
       compiler: 'vue3',
-      scale: 1.5,
+      scale: 1.5
     }),
 
     // rewrite assets to use relative path
@@ -91,12 +93,12 @@ export default defineConfig({
           /"\/assets\//g,
           `"${relative(dirname(path), '/assets')}/`
         )
-      },
+      }
     },
 
     transformHtmlPlugin({
-      HTML_TITLE: packageJson.displayName || packageJson.name,
-    }),
+      HTML_TITLE: packageJson.displayName || packageJson.name
+    })
   ],
   define,
   build: {
@@ -104,19 +106,20 @@ export default defineConfig({
       input: {
         iframe: 'src/content-script/iframe/index.html',
         setup: 'src/setup/index.html',
-      },
-    },
+        main: 'src/main/index.html'
+      }
+    }
   },
   server: {
     port: 8888,
     strictPort: true,
     hmr: {
       port: 8889,
-      overlay: false,
-    },
+      overlay: false
+    }
   },
   optimizeDeps: {
     include: ['vue', '@vueuse/core'],
-    exclude: ['vue-demi'],
-  },
+    exclude: ['vue-demi']
+  }
 })

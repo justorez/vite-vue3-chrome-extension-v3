@@ -10,11 +10,11 @@ const router = createRouter({
   extendRoutes: (routes) => {
     routes.push({
       path: '/',
-      redirect: '/popup',
+      redirect: '/popup'
     })
 
     return routes
-  },
+  }
 })
 
 createApp(App).use(router).use(createPinia()).mount('#app')

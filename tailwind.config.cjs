@@ -2,12 +2,16 @@
 module.exports = {
   content: ['./src/**/*.{index,vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {}
   },
   plugins: [
     'prettier-plugin-tailwindcss',
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('daisyui'),
+    require('daisyui')
   ],
+  daisyui: {
+    // https://daisyui.com/docs/themes/
+    themes: ['emerald', 'dark']
+  }
 }

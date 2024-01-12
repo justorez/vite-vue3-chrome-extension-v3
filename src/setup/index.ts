@@ -16,11 +16,11 @@ const router = createRouter({
   extendRoutes: (routes) => {
     routes.push({
       path: '/',
-      redirect: '/setup',
+      redirect: '/setup'
     })
 
     return routes
-  },
+  }
 })
 
 router.beforeEach((to, _from, next) => {
