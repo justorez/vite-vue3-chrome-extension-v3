@@ -3,7 +3,7 @@
   "displayName": "Vite Vue 3 Chrome Extension",
   "name": "vite-vue3-chrome-extension-v3",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
